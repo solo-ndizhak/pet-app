@@ -1,0 +1,30 @@
+<form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()" novalidate>
+  <div class="form-wrapper">
+    <div class="form-item">
+      <mat-form-field appearance="outline">
+        <mat-label>Name or Breed</mat-label>
+        <input formControlName="nameOrBreed" matInput>
+      </mat-form-field>
+    </div>
+
+    <div class="form-item">
+      <label>Gender: </label>
+      <mat-radio-group formControlName="gender" color="primary">
+        <mat-radio-button value="">All</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+        <mat-radio-button value="male">Male</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="form-item">
+      <label>Animal type:</label>
+      <mat-radio-group formControlName="type" color="primary">
+        <mat-radio-button value="">All</mat-radio-button>
+        <mat-radio-button value="cat">Cats</mat-radio-button>
+        <mat-radio-button value="dog">Dogs</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <button mat-raised-button color="primary" type="submit">Search</button>
+</form>

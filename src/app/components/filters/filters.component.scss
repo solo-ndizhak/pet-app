@@ -1,0 +1,19 @@
+form {
+  display: block;
+  max-width: 1300px;
+  margin: 0 auto 20px;
+}
+
+.form-wrapper {
+  display: flex;
+  gap: 25px;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-radio-button {
+  margin-right: 10px;
+}

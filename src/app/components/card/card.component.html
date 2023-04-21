@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{animal.name}}</mat-card-title>
+    <mat-card-subtitle>Name</mat-card-subtitle>
+  </mat-card-header>
+  <div class="image" [style.backgroundImage]="'url(' + animal.image + ')'"></div>
+  <mat-card-content>
+    <p>Type : {{animal.type | titlecase}}</p>
+
+    <p>Gender : {{animal.gender}}</p>
+
+    <p>Breed : {{animal.breed}}</p>
+
+    <p>Age : {{animal.age_months}} Months</p>
+
+    <p>Available : {{animal.taken ? 'No' : 'Yes'}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <a routerLink="/pet-details/{{ animal.id }}" mat-raised-button color="primary">View more</a>
+  </mat-card-actions>
+</mat-card>
