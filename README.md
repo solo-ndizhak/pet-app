@@ -4,6 +4,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
+Install JSON Server
+
+`npm install -g json-server`
+(https://github.com/typicode/json-server)
+
+Run `json-server index.js` - it will start local server on `http://localhost:4200/`
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
