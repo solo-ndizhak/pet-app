@@ -9,9 +9,11 @@ Install JSON Server
 `npm install -g json-server`
 (https://github.com/typicode/json-server)
 
-Run `json-server index.js` - it will start local server on `http://localhost:4200/`
+From root project folder:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `json-server db.js` - it will start local server on `http://localhost:3000/`
+
+Run `ng serve` in another terminal for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
