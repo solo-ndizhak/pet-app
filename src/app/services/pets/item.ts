@@ -12,4 +12,5 @@ export interface Item {
 export interface ItemDetails extends Item {
   description: string
   medical_notes: string
+  additional_images: string[]
 }

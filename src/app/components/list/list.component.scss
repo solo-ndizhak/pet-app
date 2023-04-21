@@ -1,6 +1,7 @@
 :host {
   display: block;
   padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .list {
@@ -8,5 +9,18 @@
   max-width: 1300px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+hr {
+  margin: 40px auto;
+  max-width: 1300px;
+}
+
+.pagination {
+  margin: 0 auto;
+  max-width: 1300px;
+  display: flex;
   gap: 20px;
 }

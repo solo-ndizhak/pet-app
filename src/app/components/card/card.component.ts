@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Item } from 'src/app/services/pets/item';
+import { Item, ItemDetails } from 'src/app/services/pets/item';
 
 @Component({
   selector: 'app-card',
@@ -7,5 +7,5 @@ import { Item } from 'src/app/services/pets/item';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
-  @Input() animal: Item = {} as Item
+  @Input() animal: Item | ItemDetails = {} as ItemDetails
 }

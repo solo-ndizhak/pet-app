@@ -1,5 +1,8 @@
+import { transition } from '@angular/animations';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { PetsService } from 'src/app/services/pets/pets.service';
 
 @Component({
   selector: 'app-filters',
@@ -7,13 +10,17 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./filters.component.scss']
 })
 export class FiltersComponent {
-  reactiveForm = new FormGroup({
-    nameOrBreed: new FormControl(''),
-    gender: new FormControl(''),
-    type: new FormControl(''),
-  })
+  reactiveForm: FormGroup
+
+  constructor(private petsService: PetsService) {
+    this.reactiveForm = new FormGroup({
+      nameOrBreed: new FormControl(petsService.nameOrBreed),
+      gender: new FormControl(petsService.gender),
+      type: new FormControl(petsService.type),
+    })
+  }
 
   onSubmit() {
-    console.log(this.reactiveForm.value)
+    this.petsService.updateFiltersAndSearch(this.reactiveForm.value)
   }
 }

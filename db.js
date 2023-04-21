@@ -214,12 +214,20 @@ const pets = [
 ]
 
 module.exports = () => {
-  const data = { pets }
+  const data = {
+    pets: pets.map(el => ({
+      ...el,
+      nameOrBreed: el.name + el.breed
+    }))
+  }
 
   data.petDetails = pets.map(el => ({
     ...el,
     description: casual.description,
-    medical_notes: casual.description
+    medical_notes: casual.description,
+    additional_images: el.type === 'cat' ?
+      ['/assets/images/cats/cat3.png', '/assets/images/cats/cat2.png', '/assets/images/cats/cat5.png'] :
+      ['/assets/images/dogs/dog1.png', '/assets/images/dogs/dog4.png', '/assets/images/dogs/dog3.png']
   }))
 
   return data

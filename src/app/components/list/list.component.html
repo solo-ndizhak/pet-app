@@ -2,3 +2,7 @@
 <div class="list" cols="3" gutterSize="20">
   <app-card *ngFor="let item of itemList" [animal]="item"></app-card>
 </div>
+<hr />
+<div class="pagination">
+  <button *ngFor="let page of paginationItems" mat-raised-button (click)="goToPage(page.page)">{{ page.title | titlecase }} page</button>
+</div>

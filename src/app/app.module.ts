@@ -12,11 +12,12 @@ import { PetDetailsComponent } from './components/pet-details/pet-details.compon
 import { FiltersComponent } from './components/filters/filters.component';
 import { CardComponent } from './components/card/card.component'
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button'
 import { MatCardModule } from '@angular/material/card'
 import { MatRadioModule } from '@angular/material/radio'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 
 @NgModule({
   declarations: [
@@ -37,9 +38,10 @@ import { MatRadioModule } from '@angular/material/radio'
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSnackBarModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

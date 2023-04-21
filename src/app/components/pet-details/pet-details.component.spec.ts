@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PetDetailsComponent } from './pet-details.component';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
 
 describe('PetDetailsComponent', () => {
   let component: PetDetailsComponent;
@@ -8,9 +12,15 @@ describe('PetDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PetDetailsComponent ]
+      imports: [
+        AppRoutingModule,
+        RouterModule,
+        HttpClientModule,
+        MatCardModule
+      ],
+      declarations: [PetDetailsComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(PetDetailsComponent);
     component = fixture.componentInstance;

@@ -1,1 +1,27 @@
-<p>pet-details works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{animal.name}}</mat-card-title>
+    <mat-card-subtitle>Name</mat-card-subtitle>
+  </mat-card-header>
+  <div class="image" [style.backgroundImage]="'url(' + animal.image + ')'"></div>
+  <mat-card-content>
+    <p>Type : {{animal.type | titlecase}}</p>
+
+    <p>Gender : {{animal.gender}}</p>
+
+    <p>Breed : {{animal.breed}}</p>
+
+    <p>Age : {{animal.age_months}} Months</p>
+
+    <p>Available : {{animal.taken ? 'No' : 'Yes'}}</p>
+
+    <p>Info : {{ animal.description }}</p>
+
+    <p>Medical Notes : {{ animal.medical_notes }}</p>
+  </mat-card-content>
+  <div class="image" *ngFor="let photo of animal.additional_images" [style.backgroundImage]="'url(' + photo + ')'"></div>
+  <mat-card-actions>
+    <button *ngIf="!animal.taken" mat-raised-button color="primary" (click)="onAdoptClick()">Adopt</button>
+    <button *ngIf="animal.taken" mat-raised-button color="primary" disabled="">Taken</button>
+  </mat-card-actions>
+</mat-card>
