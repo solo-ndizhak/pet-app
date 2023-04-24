@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Item, ItemDetails } from 'src/app/services/pets/item';
+import { Item, ItemDetails } from 'src/app/services/pets/pet_interfaces';
 import { PetsService } from 'src/app/services/pets/pets.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class PetDetailsComponent {
     private petsService: PetsService,
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.id = Number(params['id']);
       this.petsService.getItem(this.id)
@@ -25,7 +25,7 @@ export class PetDetailsComponent {
     this.petsService.petDetails$.subscribe(details => this.animal = details)
   }
 
-  onAdoptClick() {
+  onAdoptClick(): void {
     this.petsService.adoptPet(this.id)
   }
 

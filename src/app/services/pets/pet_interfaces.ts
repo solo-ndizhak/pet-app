@@ -14,3 +14,9 @@ export interface ItemDetails extends Item {
   medical_notes: string
   additional_images: string[]
 }
+
+export interface Filters {
+  nameOrBreed: string
+  gender: string
+  type: string
+}

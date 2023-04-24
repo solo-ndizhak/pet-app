@@ -1,14 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Observable, Subject, forkJoin } from 'rxjs';
-import { Item, ItemDetails } from './item';
+import { Filters, Item, ItemDetails } from './pet_interfaces';
 import { NotificationService } from '../notifications.service';
-
-export interface Filters {
-  nameOrBreed: string
-  gender: string
-  type: string
-}
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +26,7 @@ export class PetsService {
 
   constructor(private http: HttpClient, private notification: NotificationService) { }
 
-  updateFiltersAndSearch(filters: Filters) {
+  updateFiltersAndSearch(filters: Filters): void {
     this.nameOrBreed = filters.nameOrBreed
     this.type = filters.type
     this.gender = filters.gender
@@ -48,7 +42,7 @@ export class PetsService {
     queryParams = this.gender ? queryParams.append('gender', this.gender) : queryParams
     queryParams = this.type ? queryParams.append('type', this.type) : queryParams
 
-    this.http.get<any>(this.apiUrl, {
+    this.http.get<Item[]>(this.apiUrl, {
       params: queryParams,
       observe: 'response'
     }).subscribe((resp: HttpResponse<Item[]>) => {
@@ -68,13 +62,13 @@ export class PetsService {
   }
 
   adoptPet(id: number): void {
-    const url = `${this.apiDetailUrl}/${id}`;
-    const url2 = `${this.apiUrl}/${id}`;
+    const detailUrl = `${this.apiDetailUrl}/${id}`;
+    const listUrl = `${this.apiUrl}/${id}`;
 
-    forkJoin(
-      this.http.patch<ItemDetails>(url, { 'taken': true }),
-      this.http.patch<ItemDetails>(url2, { 'taken': true })
-    ).subscribe(data => {
+    forkJoin([
+      this.http.patch<ItemDetails>(detailUrl, { 'taken': true }),
+      this.http.patch<ItemDetails>(listUrl, { 'taken': true })
+    ]).subscribe(data => {
       this.petDetails.next(data[0])
       this.notification.sendNotification('Congratulations! You have adopted an adorable pet!', "I'm Happy!")
     })

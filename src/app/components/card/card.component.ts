@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Item, ItemDetails } from 'src/app/services/pets/item';
+import { Item, ItemDetails } from 'src/app/services/pets/pet_interfaces';
 
 @Component({
   selector: 'app-card',

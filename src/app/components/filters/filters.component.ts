@@ -2,6 +2,7 @@ import { transition } from '@angular/animations';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { PetsService } from 'src/app/services/pets/pets.service';
 
 @Component({
@@ -18,9 +19,16 @@ export class FiltersComponent {
       gender: new FormControl(petsService.gender),
       type: new FormControl(petsService.type),
     })
+
+    this.reactiveForm
+      .valueChanges
+      .pipe(
+        debounceTime(500),
+        distinctUntilChanged()
+      ).subscribe(() => this.onSubmit())
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.petsService.updateFiltersAndSearch(this.reactiveForm.value)
   }
 }

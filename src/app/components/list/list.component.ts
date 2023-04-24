@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Item } from '../../services/pets/item';
+import { Item } from '../../services/pets/pet_interfaces';
 import { PetsService } from '../../services/pets/pets.service';
 import { HttpResponse } from '@angular/common/http';
 
 export interface Pagination { title: string, page: string }
 
 export const getPaginationItems = (pagStr: string | null) => {
-  console.log(pagStr);
   if (!pagStr) return []
 
   return pagStr.split(',').map(route => {
@@ -31,12 +30,11 @@ export class ListComponent implements OnInit {
   constructor(private petsService: PetsService) {
     petsService.pets$.subscribe(items => this.itemList = items)
     petsService.pagination$.subscribe(paginationString => {
-      debugger
       this.paginationItems = getPaginationItems(paginationString) || [];
     })
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getItems();
   }
 

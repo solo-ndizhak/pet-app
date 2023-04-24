@@ -13,7 +13,7 @@ export class NotificationService {
   private notificationSubject = new Subject<NotificationPayload>();
   notification$ = this.notificationSubject.asObservable();
 
-  sendNotification(message: string, action: string) {
+  sendNotification(message: string, action: string): void {
     this.notificationSubject.next({ message, action });
   }
 }
